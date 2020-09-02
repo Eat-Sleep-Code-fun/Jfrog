@@ -1,0 +1,19 @@
+resources:
+  - name: my_app_repo
+    type: GitRepo
+    configuration:
+      gitProvider: my_github
+      path: Eat-Sleep-Code-fun/Jfrog
+      branches:
+        include: master
+pipelines:
+  - name: java_pipeline
+    steps:
+      - name: step_1
+        type: Bash
+        configuration:
+          inputResources:
+            - name: my_app_repo
+        execution:
+           onExecute:
+             - cat /etc/passwd
